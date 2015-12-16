@@ -1,7 +1,7 @@
 library(dplyr)
 
 
-df <- read.csv("RMBSIT000183100220128.csv")
+df <- read.csv("RMBS.csv")
 
 
 df_na <- apply(df, MARGIN =  c(1, 2), FUN=gsub, pattern="ND,[0-9]|ND\\.[0-9]|^$", replacement=NA)
@@ -61,7 +61,7 @@ nb_different <- function(x){length(unique(x))}
 
 df_without_na <- na.omit(subset(df_without_na_columns, select = -which(apply(df_without_na_columns, MARGIN=2, FUN=nb_different) <2) ))
 
-write.csv(df_without_na, "RMBSIT000183100220128_cleaned.csv", row.names=FALSE)
+write.csv(df_without_na, "RMBS_cleaned.csv", row.names=FALSE)
 
 
 
